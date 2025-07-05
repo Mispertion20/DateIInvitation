@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Date Invitation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: url('https://images.unsplash.com/photo-1508264165352-258a6b0d3b61?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .content {
+      background: url('./Background.png')no-repeat center center;
+      background-size: cover;
+      width: 100%;
+        height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    h1, p {
+        color: 	#fbc1c5;
+      margin: 5px;
+      z-index: 2;
+    }
+
+    h1{
+        color: 	#ff7e87;
+      font-family: 'Great Vibes', cursive;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+
+   p {
+  font-size: 1.1rem;
+}
+
+    .btn-container {
+      margin-top: 20px;
+      position: relative;
+      height: 60px;
+      width: 100%;
+      z-index: 2;
+      align-items: center;
+      justify-content: center;
+      display:  flex;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .yes-btn {
+        background-color: transparent;
+        color: 	#ff7e87;
+      margin-right: 100px;
+      position: relative;
+      z-index: 2;
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .no-btn {
+        background-color: transparent;
+        color: 	#ff7e87;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      z-index: 2;
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .extra-yes {
+      position: absolute;
+      background-color: transparent;
+      font-family: 'Great Vibes', cursive;
+        color: 	#ff7e87;
+      padding: 10px 20px;
+      font-size: 2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 999;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="content">
+    <h1>Dear Gulim</h1>
+    <h1>Will you go on a date with me?</h1>
+    <p>Date: <strong>08/07/25</strong></p>
+    <p>Time: <strong>14:00</strong></p>
+    <p>Place: <strong>Secret</strong>(I will meet you)</p>
+    <div class="btn-container">
+      <button class="yes-btn" onclick="alert('Yay! 💖')">Yes</button>
+      <button class="no-btn" id="noBtn">No</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const btnContainer = document.querySelector('.btn-container');
+
+    noBtn.addEventListener('mouseover', () => {
+      const containerWidth = btnContainer.offsetWidth;
+      const containerHeight = btnContainer.offsetHeight;
+
+      const maxX = containerWidth - noBtn.offsetWidth;
+      const maxY = containerHeight - noBtn.offsetHeight;
+
+      const randX = Math.floor(Math.random() * maxX);
+      const randY = Math.floor(Math.random() * maxY);
+
+      noBtn.style.left = randX + "px";
+      noBtn.style.top = randY + "px";
+    });
+
+    noBtn.addEventListener('click', () => {
+      for (let i = 0; i < 3; i++) {
+        const yes = document.createElement('button');
+        yes.classList.add('extra-yes');
+        yes.innerText = "Yes";
+        yes.style.top = Math.floor(Math.random() * (window.innerHeight - 60)) + "px";
+        yes.style.left = Math.floor(Math.random() * (window.innerWidth - 100)) + "px";
+        yes.onclick = () => alert("Yay! 💖");
+        document.body.appendChild(yes);
+      }
+    });
+  </script>
+</body>
+</html>
